@@ -24,7 +24,7 @@ app.config['DIRPATH'] = sys.argv[1]
 def index():
     dirpath = app.config['DIRPATH']
     paths = get_all_path(dirpath)
-    paths = [quote(x, safe='') for x in paths]
+    paths = [{'path': quote(x, safe=''), 'title': os.path.split(x)[1]} for x in paths]
     return render_template('index.html', paths=paths)
 
 
